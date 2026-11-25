@@ -1,0 +1,10 @@
+# The components demo site of this repository: static pages, served by the web server of a DDEV
+# project with no database, at http://uikit-steps-demo.ddev.site. `ddev start` in this folder starts
+# it, `ddev stop` stops it, `ddev delete -Oy` removes it.
+name: uikit-steps-demo
+type: php
+docroot: .
+php_version: "8.3"
+webserver_type: nginx-fpm
+omit_containers: [db]
+nodejs_version: "24"

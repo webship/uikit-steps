@@ -1,0 +1,4 @@
+/* The demo site's own few rules. */
+.demo-section { min-height: 90vh; padding-top: 20px; }
+/* Room below the last section, so that it can reach the top of the window too. */
+.demo-end { height: 100vh; }

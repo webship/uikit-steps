@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alert · Components demo</title>
+  <link rel="stylesheet" href="vendor/uikit-3.25.31/css/uikit.min.css">
+  <link rel="stylesheet" href="css/demo.css">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <script src="vendor/uikit-3.25.31/js/uikit.min.js"></script>
+  <script src="vendor/uikit-3.25.31/js/uikit-icons.min.js"></script>
+</head>
+<body>
+  <header class="uk-background-muted">
+    <div class="uk-container">
+      <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar aria-label="Main">
+        <div class="uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="index.html">Components demo</a>
+          <ul class="uk-navbar-nav uk-visible@m">
+          <li>
+            <a href="#">Overlays <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="modal.html">Modal</a></li>
+                <li><a href="offcanvas.html">Offcanvas</a></li>
+                <li><a href="dropdown.html">Drop and dropdown</a></li>
+                <li><a href="tooltip.html">Tooltip</a></li>
+                <li><a href="notification.html">Notification</a></li>
+                <li><a href="lightbox.html">Lightbox</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Navigation <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="navbar.html">Navbar</a></li>
+                <li><a href="switcher.html">Switcher and tab</a></li>
+                <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+                <li><a href="sticky.html">Sticky and scrollspy</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Content <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="accordion.html">Accordion and toggle</a></li>
+                <li><a href="alert.html">Alert</a></li>
+                <li><a href="slideshow.html">Slideshow</a></li>
+                <li><a href="slider.html">Slider</a></li>
+                <li><a href="filter.html">Filter</a></li>
+                <li><a href="loading.html">Spinner and progress</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="form.html">Forms</a></li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <a class="uk-navbar-toggle uk-hidden@m" href="#site-menu" uk-toggle aria-label="Toggle navigation"><span uk-navbar-toggle-icon></span></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div id="site-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+      <h2 class="uk-h4">Site menu</h2>
+      <ul class="uk-nav uk-nav-default">
+          <li><a href="index.html">Home</a></li>
+          <li class="uk-nav-header">Overlays</li>
+          <li><a href="modal.html">Modal</a></li>
+          <li><a href="offcanvas.html">Offcanvas</a></li>
+          <li><a href="dropdown.html">Drop and dropdown</a></li>
+          <li><a href="tooltip.html">Tooltip</a></li>
+          <li><a href="notification.html">Notification</a></li>
+          <li><a href="lightbox.html">Lightbox</a></li>
+          <li class="uk-nav-header">Navigation</li>
+          <li><a href="navbar.html">Navbar</a></li>
+          <li><a href="switcher.html">Switcher and tab</a></li>
+          <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+          <li><a href="sticky.html">Sticky and scrollspy</a></li>
+          <li class="uk-nav-header">Content</li>
+          <li><a href="accordion.html">Accordion and toggle</a></li>
+          <li><a href="alert.html">Alert</a></li>
+          <li><a href="slideshow.html">Slideshow</a></li>
+          <li><a href="slider.html">Slider</a></li>
+          <li><a href="filter.html">Filter</a></li>
+          <li><a href="loading.html">Spinner and progress</a></li>
+          <li class="uk-nav-header">Forms</li>
+          <li><a href="form.html">Form</a></li>
+      </ul>
+    </div>
+  </div>
+  <main id="content" class="uk-container uk-margin-medium-top">
+    <h1>Alert</h1>
+    <p class="uk-text-lead">Messages in the page, some of which can be closed.</p>
+    <div class="uk-alert-primary" uk-alert>
+      <a href class="uk-alert-close" uk-close aria-label="Close"></a>
+      <p>A new version of the guide is out.</p>
+    </div>
+    <div class="uk-alert-success" uk-alert>
+      <a href class="uk-alert-close" uk-close aria-label="Close"></a>
+      <p>Your profile was updated.</p>
+    </div>
+    <div class="uk-alert-warning" uk-alert>
+      <a href class="uk-alert-close" uk-close aria-label="Close"></a>
+      <p>Your subscription ends in three days.</p>
+    </div>
+    <div class="uk-alert-danger" uk-alert>
+      <p>The payment was refused. Check the card number.</p>
+    </div>
+  </main>
+  <footer class="uk-container uk-margin-large-top uk-margin-medium-bottom uk-text-small uk-text-muted">
+    <p>A page of the components demo site of the step pack. The markup follows the framework's own test pages
+    (UIkit 3.25.31, MIT licence, copyright YOOtheme GmbH, getuikit.com); the texts and images are the demo site's own.</p>
+  </footer>
+</body>
+</html>

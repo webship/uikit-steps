@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accordion and toggle · Components demo</title>
+  <link rel="stylesheet" href="vendor/uikit-3.25.31/css/uikit.min.css">
+  <link rel="stylesheet" href="css/demo.css">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <script src="vendor/uikit-3.25.31/js/uikit.min.js"></script>
+  <script src="vendor/uikit-3.25.31/js/uikit-icons.min.js"></script>
+</head>
+<body>
+  <header class="uk-background-muted">
+    <div class="uk-container">
+      <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar aria-label="Main">
+        <div class="uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="index.html">Components demo</a>
+          <ul class="uk-navbar-nav uk-visible@m">
+          <li>
+            <a href="#">Overlays <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="modal.html">Modal</a></li>
+                <li><a href="offcanvas.html">Offcanvas</a></li>
+                <li><a href="dropdown.html">Drop and dropdown</a></li>
+                <li><a href="tooltip.html">Tooltip</a></li>
+                <li><a href="notification.html">Notification</a></li>
+                <li><a href="lightbox.html">Lightbox</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Navigation <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="navbar.html">Navbar</a></li>
+                <li><a href="switcher.html">Switcher and tab</a></li>
+                <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+                <li><a href="sticky.html">Sticky and scrollspy</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Content <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="accordion.html">Accordion and toggle</a></li>
+                <li><a href="alert.html">Alert</a></li>
+                <li><a href="slideshow.html">Slideshow</a></li>
+                <li><a href="slider.html">Slider</a></li>
+                <li><a href="filter.html">Filter</a></li>
+                <li><a href="loading.html">Spinner and progress</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="form.html">Forms</a></li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <a class="uk-navbar-toggle uk-hidden@m" href="#site-menu" uk-toggle aria-label="Toggle navigation"><span uk-navbar-toggle-icon></span></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div id="site-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+      <h2 class="uk-h4">Site menu</h2>
+      <ul class="uk-nav uk-nav-default">
+          <li><a href="index.html">Home</a></li>
+          <li class="uk-nav-header">Overlays</li>
+          <li><a href="modal.html">Modal</a></li>
+          <li><a href="offcanvas.html">Offcanvas</a></li>
+          <li><a href="dropdown.html">Drop and dropdown</a></li>
+          <li><a href="tooltip.html">Tooltip</a></li>
+          <li><a href="notification.html">Notification</a></li>
+          <li><a href="lightbox.html">Lightbox</a></li>
+          <li class="uk-nav-header">Navigation</li>
+          <li><a href="navbar.html">Navbar</a></li>
+          <li><a href="switcher.html">Switcher and tab</a></li>
+          <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+          <li><a href="sticky.html">Sticky and scrollspy</a></li>
+          <li class="uk-nav-header">Content</li>
+          <li><a href="accordion.html">Accordion and toggle</a></li>
+          <li><a href="alert.html">Alert</a></li>
+          <li><a href="slideshow.html">Slideshow</a></li>
+          <li><a href="slider.html">Slider</a></li>
+          <li><a href="filter.html">Filter</a></li>
+          <li><a href="loading.html">Spinner and progress</a></li>
+          <li class="uk-nav-header">Forms</li>
+          <li><a href="form.html">Form</a></li>
+      </ul>
+    </div>
+  </div>
+  <main id="content" class="uk-container uk-margin-medium-top">
+    <h1>Accordion and toggle</h1>
+    <p class="uk-text-lead">Panels that open and close, one or several at a time.</p>
+    <h2>Accordion</h2>
+    <ul uk-accordion aria-label="Questions">
+      <li class="uk-open">
+        <a class="uk-accordion-title" href="#">Shipping</a>
+        <div class="uk-accordion-content"><p>Orders leave the warehouse within two working days.</p></div>
+      </li>
+      <li>
+        <a class="uk-accordion-title" href="#">Returns</a>
+        <div class="uk-accordion-content"><p>Send an item back within thirty days for a full refund.</p></div>
+      </li>
+      <li>
+        <a class="uk-accordion-title" href="#">Payment</a>
+        <div class="uk-accordion-content"><p>Pay by card or by bank transfer.</p></div>
+      </li>
+    </ul>
+
+    <h2>Several open at once</h2>
+    <ul uk-accordion="multiple: true" aria-label="Settings">
+      <li>
+        <a class="uk-accordion-title" href="#">Privacy</a>
+        <div class="uk-accordion-content"><p>Who sees your profile.</p></div>
+      </li>
+      <li>
+        <a class="uk-accordion-title" href="#">Language</a>
+        <div class="uk-accordion-content"><p>English, French or Arabic.</p></div>
+      </li>
+    </ul>
+
+    <h2>Toggle</h2>
+    <p><button class="uk-button uk-button-default" type="button" uk-toggle="target: #more-details; animation: uk-animation-fade" aria-controls="more-details">More details</button></p>
+    <div id="more-details" hidden>
+      <p>The notebook has 120 pages of recycled paper, and a cover that keeps out the rain.</p>
+    </div>
+  </main>
+  <footer class="uk-container uk-margin-large-top uk-margin-medium-bottom uk-text-small uk-text-muted">
+    <p>A page of the components demo site of the step pack. The markup follows the framework's own test pages
+    (UIkit 3.25.31, MIT licence, copyright YOOtheme GmbH, getuikit.com); the texts and images are the demo site's own.</p>
+  </footer>
+</body>
+</html>

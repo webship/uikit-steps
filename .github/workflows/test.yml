@@ -1,0 +1,185 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - 2.0.x
+  pull_request:
+    branches:
+      - 2.0.x
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# The runs of a pull request share a group, so a newer push cancels the run
+# it supersedes. Every other run (a push to 2.0.x, a run started by hand)
+# gets a group of its own: it is never queued behind another run, and never
+# cancelled.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  demo:
+    # The demo site of this repository, started with DDEV as the README starts it: the whole suite
+    # against it twice, then the assertions that must fail.
+    name: uikit-steps on the demo site
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      HEADLESS: 'true'
+      FORCE_COLOR: '1'
+      DEMO_URL: http://uikit-steps-demo.ddev.site
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check the JSDoc examples and feature steps against the step regexes
+        run: npm run test:examples
+
+      - name: Check that a feature named on the command line runs alone
+        run: npm run test:paths
+
+      - name: Run cucumber-js dry-run (ambiguity / undefined step check)
+        run: npx cucumber-js --dry-run
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Install DDEV
+        uses: ddev/github-action-setup-ddev@v1
+        with:
+          autostart: false
+
+      - name: Start the demo site (DDEV)
+        run: |
+          cd demo-site
+          ddev start
+
+      - name: Wait for the demo site to answer
+        run: |
+          for i in $(seq 1 30); do
+            curl -sf "$DEMO_URL/index.html" > /dev/null && curl -sf "$DEMO_URL/vendor/uikit-3.25.31/js/uikit.min.js" > /dev/null && exit 0
+            sleep 2
+          done
+          echo "The demo site did not answer in time" >&2
+          exit 1
+
+      - name: Check the demo site is the one cucumber.js runs against by default
+        run: |
+          DEFAULT_URL="$(LAUNCH_URL= node -e "console.log(require('./cucumber.js').default.worldParameters.launchUrl)")"
+          echo "Started: $DEMO_URL, default: $DEFAULT_URL"
+          test "$DEMO_URL" = "$DEFAULT_URL"
+
+      - name: Run the test suite
+        run: npx cucumber-js
+
+      - name: Run the test suite again (it leaves the site as it found it)
+        run: npx cucumber-js
+
+      - name: Run the assertions that must fail
+        run: npm run test:must-fail
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report-demo
+          path: tests/reports/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Upload failure screenshots and videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-screenshots-demo
+          path: |
+            screenshots/
+            videos/
+          retention-days: 14
+          if-no-files-found: ignore
+
+  cms:
+    # A real site: Drupal 11 with the free theme UI Suite UIkit as its default theme (its links
+    # boosted by htmx), built with DDEV on the runner, and the features of tests/cms/ against it,
+    # twice, with the site's counts compared after each run.
+    name: uikit-steps on a Drupal site with a free theme
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      HEADLESS: 'true'
+      FORCE_COLOR: '1'
+      SITE_DIR: ${{ github.workspace }}/../drupal-site
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Install DDEV
+        uses: ddev/github-action-setup-ddev@v1
+        with:
+          autostart: false
+
+      - name: Build the Drupal site with the theme UI Suite UIkit
+        run: .github/scripts/build-drupal-site.sh
+
+      - name: Count what the site holds
+        run: COUNTS_ONLY=1 .github/scripts/build-drupal-site.sh | tee "$RUNNER_TEMP/counts-built.txt"
+
+      - name: Run the features of the CMS site
+        run: npx cucumber-js tests/cms
+
+      - name: Check the site holds what it held before the run
+        run: |
+          COUNTS_ONLY=1 .github/scripts/build-drupal-site.sh > "$RUNNER_TEMP/counts-run-1.txt"
+          diff -u "$RUNNER_TEMP/counts-built.txt" "$RUNNER_TEMP/counts-run-1.txt"
+
+      - name: Run them again (they leave the site as they found it)
+        run: npx cucumber-js tests/cms
+
+      - name: Check the site holds what it held before the runs
+        run: |
+          COUNTS_ONLY=1 .github/scripts/build-drupal-site.sh > "$RUNNER_TEMP/counts-run-2.txt"
+          diff -u "$RUNNER_TEMP/counts-built.txt" "$RUNNER_TEMP/counts-run-2.txt"
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report-cms
+          path: tests/reports/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Upload failure screenshots and videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-screenshots-cms
+          path: |
+            screenshots/
+            videos/
+          retention-days: 14
+          if-no-files-found: ignore
