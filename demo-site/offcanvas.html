@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offcanvas · Components demo</title>
+  <link rel="stylesheet" href="vendor/uikit-3.25.31/css/uikit.min.css">
+  <link rel="stylesheet" href="css/demo.css">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <script src="vendor/uikit-3.25.31/js/uikit.min.js"></script>
+  <script src="vendor/uikit-3.25.31/js/uikit-icons.min.js"></script>
+</head>
+<body>
+  <header class="uk-background-muted">
+    <div class="uk-container">
+      <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar aria-label="Main">
+        <div class="uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="index.html">Components demo</a>
+          <ul class="uk-navbar-nav uk-visible@m">
+          <li>
+            <a href="#">Overlays <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="modal.html">Modal</a></li>
+                <li><a href="offcanvas.html">Offcanvas</a></li>
+                <li><a href="dropdown.html">Drop and dropdown</a></li>
+                <li><a href="tooltip.html">Tooltip</a></li>
+                <li><a href="notification.html">Notification</a></li>
+                <li><a href="lightbox.html">Lightbox</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Navigation <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="navbar.html">Navbar</a></li>
+                <li><a href="switcher.html">Switcher and tab</a></li>
+                <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+                <li><a href="sticky.html">Sticky and scrollspy</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Content <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="accordion.html">Accordion and toggle</a></li>
+                <li><a href="alert.html">Alert</a></li>
+                <li><a href="slideshow.html">Slideshow</a></li>
+                <li><a href="slider.html">Slider</a></li>
+                <li><a href="filter.html">Filter</a></li>
+                <li><a href="loading.html">Spinner and progress</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="form.html">Forms</a></li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <a class="uk-navbar-toggle uk-hidden@m" href="#site-menu" uk-toggle aria-label="Toggle navigation"><span uk-navbar-toggle-icon></span></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div id="site-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+      <h2 class="uk-h4">Site menu</h2>
+      <ul class="uk-nav uk-nav-default">
+          <li><a href="index.html">Home</a></li>
+          <li class="uk-nav-header">Overlays</li>
+          <li><a href="modal.html">Modal</a></li>
+          <li><a href="offcanvas.html">Offcanvas</a></li>
+          <li><a href="dropdown.html">Drop and dropdown</a></li>
+          <li><a href="tooltip.html">Tooltip</a></li>
+          <li><a href="notification.html">Notification</a></li>
+          <li><a href="lightbox.html">Lightbox</a></li>
+          <li class="uk-nav-header">Navigation</li>
+          <li><a href="navbar.html">Navbar</a></li>
+          <li><a href="switcher.html">Switcher and tab</a></li>
+          <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+          <li><a href="sticky.html">Sticky and scrollspy</a></li>
+          <li class="uk-nav-header">Content</li>
+          <li><a href="accordion.html">Accordion and toggle</a></li>
+          <li><a href="alert.html">Alert</a></li>
+          <li><a href="slideshow.html">Slideshow</a></li>
+          <li><a href="slider.html">Slider</a></li>
+          <li><a href="filter.html">Filter</a></li>
+          <li><a href="loading.html">Spinner and progress</a></li>
+          <li class="uk-nav-header">Forms</li>
+          <li><a href="form.html">Form</a></li>
+      </ul>
+    </div>
+  </div>
+  <main id="content" class="uk-container uk-margin-medium-top">
+    <h1>Offcanvas</h1>
+    <p class="uk-text-lead">Side panels that slide in over the page, push it aside, or reveal under it.</p>
+    <p>Side panels, each opened by its button: from the left, from the right, pushing the page or revealing under it.</p>
+    <p class="uk-flex uk-flex-wrap" uk-margin>
+      <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #panel-menu">Open the menu</button>
+      <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #panel-cart">Open the cart</button>
+      <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #panel-filters">Open the filters</button>
+      <button class="uk-button uk-button-default" type="button" uk-toggle="target: #panel-help">Open the help</button>
+    </p>
+    <p id="panel-result" class="uk-text-meta" aria-live="polite">No filter is applied.</p>
+
+    <div id="panel-menu" uk-offcanvas>
+      <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+        <h3>Menu</h3>
+        <ul class="uk-nav uk-nav-default">
+          <li class="uk-active"><a href="#">Dashboard</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="#">Customers</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="panel-cart" uk-offcanvas="flip: true; overlay: true">
+      <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+        <h3>Cart</h3>
+        <p>2 items: a notebook and a pen.</p>
+        <p><button class="uk-button uk-button-primary uk-offcanvas-close" type="button">Check out</button></p>
+      </div>
+    </div>
+
+    <div id="panel-filters" uk-offcanvas="mode: push; overlay: true">
+      <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+        <h3>Filters</h3>
+        <p><label><input class="uk-checkbox" type="checkbox" id="filter-stock"> In stock only</label></p>
+        <p><button class="uk-button uk-button-primary" type="button" id="filters-apply">Apply</button></p>
+      </div>
+    </div>
+
+    <div id="panel-help" uk-offcanvas="mode: reveal">
+      <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+        <h3>Help</h3>
+        <p>Ask the support team: they answer within a day.</p>
+      </div>
+    </div>
+  </main>
+  <footer class="uk-container uk-margin-large-top uk-margin-medium-bottom uk-text-small uk-text-muted">
+    <p>A page of the components demo site of the step pack. The markup follows the framework's own test pages
+    (UIkit 3.25.31, MIT licence, copyright YOOtheme GmbH, getuikit.com); the texts and images are the demo site's own.</p>
+  </footer>
+  <script>
+    document.getElementById('filters-apply').addEventListener('click', function () {
+      document.getElementById('panel-result').textContent = document.getElementById('filter-stock').checked ? 'Showing the items in stock.' : 'No filter is applied.';
+      UIkit.offcanvas('#panel-filters').hide();
+    });
+  </script>
+</body>
+</html>

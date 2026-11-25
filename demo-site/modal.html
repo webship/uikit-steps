@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modal · Components demo</title>
+  <link rel="stylesheet" href="vendor/uikit-3.25.31/css/uikit.min.css">
+  <link rel="stylesheet" href="css/demo.css">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <script src="vendor/uikit-3.25.31/js/uikit.min.js"></script>
+  <script src="vendor/uikit-3.25.31/js/uikit-icons.min.js"></script>
+</head>
+<body>
+  <header class="uk-background-muted">
+    <div class="uk-container">
+      <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar aria-label="Main">
+        <div class="uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="index.html">Components demo</a>
+          <ul class="uk-navbar-nav uk-visible@m">
+          <li>
+            <a href="#">Overlays <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="modal.html">Modal</a></li>
+                <li><a href="offcanvas.html">Offcanvas</a></li>
+                <li><a href="dropdown.html">Drop and dropdown</a></li>
+                <li><a href="tooltip.html">Tooltip</a></li>
+                <li><a href="notification.html">Notification</a></li>
+                <li><a href="lightbox.html">Lightbox</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Navigation <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="navbar.html">Navbar</a></li>
+                <li><a href="switcher.html">Switcher and tab</a></li>
+                <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+                <li><a href="sticky.html">Sticky and scrollspy</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Content <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="accordion.html">Accordion and toggle</a></li>
+                <li><a href="alert.html">Alert</a></li>
+                <li><a href="slideshow.html">Slideshow</a></li>
+                <li><a href="slider.html">Slider</a></li>
+                <li><a href="filter.html">Filter</a></li>
+                <li><a href="loading.html">Spinner and progress</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="form.html">Forms</a></li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <a class="uk-navbar-toggle uk-hidden@m" href="#site-menu" uk-toggle aria-label="Toggle navigation"><span uk-navbar-toggle-icon></span></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div id="site-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+      <h2 class="uk-h4">Site menu</h2>
+      <ul class="uk-nav uk-nav-default">
+          <li><a href="index.html">Home</a></li>
+          <li class="uk-nav-header">Overlays</li>
+          <li><a href="modal.html">Modal</a></li>
+          <li><a href="offcanvas.html">Offcanvas</a></li>
+          <li><a href="dropdown.html">Drop and dropdown</a></li>
+          <li><a href="tooltip.html">Tooltip</a></li>
+          <li><a href="notification.html">Notification</a></li>
+          <li><a href="lightbox.html">Lightbox</a></li>
+          <li class="uk-nav-header">Navigation</li>
+          <li><a href="navbar.html">Navbar</a></li>
+          <li><a href="switcher.html">Switcher and tab</a></li>
+          <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+          <li><a href="sticky.html">Sticky and scrollspy</a></li>
+          <li class="uk-nav-header">Content</li>
+          <li><a href="accordion.html">Accordion and toggle</a></li>
+          <li><a href="alert.html">Alert</a></li>
+          <li><a href="slideshow.html">Slideshow</a></li>
+          <li><a href="slider.html">Slider</a></li>
+          <li><a href="filter.html">Filter</a></li>
+          <li><a href="loading.html">Spinner and progress</a></li>
+          <li class="uk-nav-header">Forms</li>
+          <li><a href="form.html">Form</a></li>
+      </ul>
+    </div>
+  </div>
+  <main id="content" class="uk-container uk-margin-medium-top">
+    <h1>Modal</h1>
+    <p class="uk-text-lead">Dialogs that open over the page, with their own title, text and buttons.</p>
+    <p>Dialogs, each opened by its button. Every dialog has a title a person reads.</p>
+    <p class="uk-flex uk-flex-wrap" uk-margin>
+      <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #newsletter">Subscribe to the newsletter</button>
+      <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #terms">Read the terms</button>
+      <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #keep-open">Start the upload</button>
+      <button class="uk-button uk-button-danger" type="button" id="delete-file">Delete the file</button>
+    </p>
+    <p id="dialog-result" class="uk-text-meta" aria-live="polite">Nothing was chosen yet.</p>
+
+    <div id="newsletter" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close aria-label="Close"></button>
+        <h2 class="uk-modal-title">Newsletter</h2>
+        <p>Get the news of the month in your mailbox: new features, events and the best articles.</p>
+        <form id="newsletter-form" class="uk-form-stacked">
+          <label class="uk-form-label" for="newsletter-email">Email address</label>
+          <input class="uk-input" id="newsletter-email" type="email" placeholder="name@example.com">
+        </form>
+        <p class="uk-text-right">
+          <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+          <button class="uk-button uk-button-primary" type="button" id="newsletter-subscribe">Subscribe</button>
+        </p>
+      </div>
+    </div>
+
+    <div id="terms" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close aria-label="Close"></button>
+        <div class="uk-modal-header">
+          <h2 class="uk-modal-title">Terms of use</h2>
+        </div>
+        <div class="uk-modal-body" uk-overflow-auto>
+          <p>These terms apply to every page of the demo site. Read them to the end before you accept them.</p>
+          <p>The site is a test site: it keeps nothing you type, it sends no mail and it shows no advertising.</p>
+          <p>The pages may change at any time, to show another component or another state of one.</p>
+          <p>Every component has a name a person reads, so a test can find it the way a person does.</p>
+          <p>That is all: accept the terms to go on.</p>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+          <button class="uk-button uk-button-default uk-modal-close" type="button">Decline</button>
+          <button class="uk-button uk-button-primary uk-modal-close" type="button" id="terms-accept">Accept</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="keep-open" uk-modal="bg-close: false; esc-close: false">
+      <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Upload in progress</h2>
+        <p>The upload goes on while this dialog is open. It closes with its button only: a click outside it or Escape leaves it open.</p>
+        <p class="uk-text-right">
+          <button class="uk-button uk-button-primary uk-modal-close" type="button">Done</button>
+        </p>
+      </div>
+    </div>
+  </main>
+  <footer class="uk-container uk-margin-large-top uk-margin-medium-bottom uk-text-small uk-text-muted">
+    <p>A page of the components demo site of the step pack. The markup follows the framework's own test pages
+    (UIkit 3.25.31, MIT licence, copyright YOOtheme GmbH, getuikit.com); the texts and images are the demo site's own.</p>
+  </footer>
+  <script>
+    (function () {
+      var result = document.getElementById('dialog-result');
+      document.getElementById('newsletter-subscribe').addEventListener('click', function () {
+        var email = document.getElementById('newsletter-email').value || 'nobody';
+        result.textContent = 'Subscribed: ' + email + '.';
+        UIkit.modal('#newsletter').hide();
+      });
+      document.getElementById('terms-accept').addEventListener('click', function () {
+        result.textContent = 'The terms were accepted.';
+      });
+      document.getElementById('delete-file').addEventListener('click', function () {
+        UIkit.modal.confirm('Delete the file report.pdf? It cannot be brought back.').then(function () {
+          result.textContent = 'The file report.pdf was deleted.';
+        }, function () {
+          result.textContent = 'Nothing was deleted.';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{
+  "name": "@webship-js/uikit-steps",
+  "version": "2.0.0",
+  "description": "Cucumber step definitions for the components of any site built on UIkit 3, a plugin for webship-js (Playwright and Cucumber): dialogs, side panels, drop-down menus and drops, accordions and toggled blocks, tabs and switchers, the navigation bar with its toggle on a narrow screen, alerts, notifications, tooltips, slideshows, sliders, the lightbox, sticky elements, filters, form states, pagination, breadcrumbs, badges, spinners and progress bars, each step waiting on the component's own events and states, never on a fixed time.",
+  "main": "tests/step-definitions/uikit-helpers.js",
+  "files": [
+    "tests/step-definitions/",
+    "tests/features/",
+    "demo-site/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "cucumber-js --config cucumber.js",
+    "test:dry": "cucumber-js --config cucumber.js --dry-run",
+    "test:examples": "node tests/check-examples.js",
+    "test:paths": "node tests/check-paths.js",
+    "test:must-fail": "node tests/check-must-fail.js",
+    "test:chromium": "BROWSER=chromium cucumber-js --config cucumber.js",
+    "test:firefox": "BROWSER=firefox cucumber-js --config cucumber.js",
+    "test:webkit": "BROWSER=webkit cucumber-js --config cucumber.js",
+    "test:headed": "HEADLESS=false cucumber-js --config cucumber.js",
+    "demo:serve": "npx --yes http-server@14.1.1 demo-site -p 8080 -s",
+    "demo:start": "cd demo-site && ddev start",
+    "demo:stop": "cd demo-site && ddev stop",
+    "generate-reports": "generate-reports",
+    "test:fast": "SLOW_MO=0 cucumber-js --config cucumber.js"
+  },
+  "keywords": [
+    "webship-js",
+    "uikit",
+    "uikit3",
+    "components",
+    "cucumber",
+    "cucumber-js",
+    "playwright",
+    "bdd",
+    "testing",
+    "e2e",
+    "gherkin"
+  ],
+  "author": "Webship.co",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webship/uikit-steps.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webship/uikit-steps/issues"
+  },
+  "homepage": "https://github.com/webship/uikit-steps#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 24.0"
+  },
+  "peerDependencies": {
+    "webship-js": "^2.0.16"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.0",
+    "webship-js": "^2.0.16"
+  },
+  "overrides": {
+    "@cucumber/cucumber": "^12"
+  }
+}

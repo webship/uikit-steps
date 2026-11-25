@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drop and dropdown · Components demo</title>
+  <link rel="stylesheet" href="vendor/uikit-3.25.31/css/uikit.min.css">
+  <link rel="stylesheet" href="css/demo.css">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <script src="vendor/uikit-3.25.31/js/uikit.min.js"></script>
+  <script src="vendor/uikit-3.25.31/js/uikit-icons.min.js"></script>
+</head>
+<body>
+  <header class="uk-background-muted">
+    <div class="uk-container">
+      <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar aria-label="Main">
+        <div class="uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="index.html">Components demo</a>
+          <ul class="uk-navbar-nav uk-visible@m">
+          <li>
+            <a href="#">Overlays <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="modal.html">Modal</a></li>
+                <li><a href="offcanvas.html">Offcanvas</a></li>
+                <li><a href="dropdown.html">Drop and dropdown</a></li>
+                <li><a href="tooltip.html">Tooltip</a></li>
+                <li><a href="notification.html">Notification</a></li>
+                <li><a href="lightbox.html">Lightbox</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Navigation <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="navbar.html">Navbar</a></li>
+                <li><a href="switcher.html">Switcher and tab</a></li>
+                <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+                <li><a href="sticky.html">Sticky and scrollspy</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Content <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="accordion.html">Accordion and toggle</a></li>
+                <li><a href="alert.html">Alert</a></li>
+                <li><a href="slideshow.html">Slideshow</a></li>
+                <li><a href="slider.html">Slider</a></li>
+                <li><a href="filter.html">Filter</a></li>
+                <li><a href="loading.html">Spinner and progress</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="form.html">Forms</a></li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <a class="uk-navbar-toggle uk-hidden@m" href="#site-menu" uk-toggle aria-label="Toggle navigation"><span uk-navbar-toggle-icon></span></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div id="site-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+      <h2 class="uk-h4">Site menu</h2>
+      <ul class="uk-nav uk-nav-default">
+          <li><a href="index.html">Home</a></li>
+          <li class="uk-nav-header">Overlays</li>
+          <li><a href="modal.html">Modal</a></li>
+          <li><a href="offcanvas.html">Offcanvas</a></li>
+          <li><a href="dropdown.html">Drop and dropdown</a></li>
+          <li><a href="tooltip.html">Tooltip</a></li>
+          <li><a href="notification.html">Notification</a></li>
+          <li><a href="lightbox.html">Lightbox</a></li>
+          <li class="uk-nav-header">Navigation</li>
+          <li><a href="navbar.html">Navbar</a></li>
+          <li><a href="switcher.html">Switcher and tab</a></li>
+          <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+          <li><a href="sticky.html">Sticky and scrollspy</a></li>
+          <li class="uk-nav-header">Content</li>
+          <li><a href="accordion.html">Accordion and toggle</a></li>
+          <li><a href="alert.html">Alert</a></li>
+          <li><a href="slideshow.html">Slideshow</a></li>
+          <li><a href="slider.html">Slider</a></li>
+          <li><a href="filter.html">Filter</a></li>
+          <li><a href="loading.html">Spinner and progress</a></li>
+          <li class="uk-nav-header">Forms</li>
+          <li><a href="form.html">Form</a></li>
+      </ul>
+    </div>
+  </div>
+  <main id="content" class="uk-container uk-margin-medium-top">
+    <h1>Drop and dropdown</h1>
+    <p class="uk-text-lead">Menus and panels that drop down from their button.</p>
+    <p>Drop-down menus, opened by a click or by hovering over their button, and a drop with any content.</p>
+    <div class="uk-flex uk-flex-wrap" uk-margin>
+      <div class="uk-inline uk-margin-small-right">
+        <button class="uk-button uk-button-default" type="button">Account <span uk-icon="icon: triangle-down"></span></button>
+        <div uk-dropdown="mode: click">
+          <ul class="uk-nav uk-dropdown-nav">
+            <li class="uk-active"><a href="#profile">Profile</a></li>
+            <li><a href="#settings">Settings</a></li>
+            <li class="uk-disabled"><a aria-disabled="true">Billing</a></li>
+            <li class="uk-nav-divider"></li>
+            <li><a href="#sign-out">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="uk-inline uk-margin-small-right">
+        <button class="uk-button uk-button-default" type="button">Share <span uk-icon="icon: triangle-down"></span></button>
+        <div uk-dropdown="mode: hover; delay-hide: 200">
+          <ul class="uk-nav uk-dropdown-nav">
+            <li><a href="#share-mail">By mail</a></li>
+            <li><a href="#share-link">Copy the link</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="uk-inline">
+        <button class="uk-button uk-button-default" type="button">Sort by <span uk-icon="icon: triangle-down"></span></button>
+        <div uk-dropdown="mode: click; pos: bottom-right">
+          <ul class="uk-nav uk-dropdown-nav">
+            <li><a href="#newest">Newest first</a></li>
+            <li><a href="#oldest">Oldest first</a></li>
+            <li><a href="#price">Price</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p id="menu-result" class="uk-text-meta" aria-live="polite">Sorted by: newest first.</p>
+
+    <h2>Drop</h2>
+    <div class="uk-inline">
+      <button class="uk-button uk-button-default" type="button">Delivery details</button>
+      <div class="uk-card uk-card-body uk-card-default" uk-drop="mode: click">
+        <h3 class="uk-card-title">Delivery</h3>
+        <p>Orders placed before noon leave the warehouse the same day.</p>
+      </div>
+    </div>
+  </main>
+  <footer class="uk-container uk-margin-large-top uk-margin-medium-bottom uk-text-small uk-text-muted">
+    <p>A page of the components demo site of the step pack. The markup follows the framework's own test pages
+    (UIkit 3.25.31, MIT licence, copyright YOOtheme GmbH, getuikit.com); the texts and images are the demo site's own.</p>
+  </footer>
+  <script>
+    (function () {
+      var labels = { newest: 'newest first', oldest: 'oldest first', price: 'price' };
+      document.querySelectorAll('a[href="#newest"], a[href="#oldest"], a[href="#price"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('menu-result').textContent = 'Sorted by: ' + labels[a.getAttribute('href').slice(1)] + '.';
+          UIkit.dropdown(a.closest('[uk-dropdown]')).hide(false);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

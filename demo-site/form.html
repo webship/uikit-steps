@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form · Components demo</title>
+  <link rel="stylesheet" href="vendor/uikit-3.25.31/css/uikit.min.css">
+  <link rel="stylesheet" href="css/demo.css">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <script src="vendor/uikit-3.25.31/js/uikit.min.js"></script>
+  <script src="vendor/uikit-3.25.31/js/uikit-icons.min.js"></script>
+</head>
+<body>
+  <header class="uk-background-muted">
+    <div class="uk-container">
+      <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar aria-label="Main">
+        <div class="uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="index.html">Components demo</a>
+          <ul class="uk-navbar-nav uk-visible@m">
+          <li>
+            <a href="#">Overlays <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="modal.html">Modal</a></li>
+                <li><a href="offcanvas.html">Offcanvas</a></li>
+                <li><a href="dropdown.html">Drop and dropdown</a></li>
+                <li><a href="tooltip.html">Tooltip</a></li>
+                <li><a href="notification.html">Notification</a></li>
+                <li><a href="lightbox.html">Lightbox</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Navigation <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="navbar.html">Navbar</a></li>
+                <li><a href="switcher.html">Switcher and tab</a></li>
+                <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+                <li><a href="sticky.html">Sticky and scrollspy</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Content <span uk-navbar-parent-icon></span></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="accordion.html">Accordion and toggle</a></li>
+                <li><a href="alert.html">Alert</a></li>
+                <li><a href="slideshow.html">Slideshow</a></li>
+                <li><a href="slider.html">Slider</a></li>
+                <li><a href="filter.html">Filter</a></li>
+                <li><a href="loading.html">Spinner and progress</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="form.html">Forms</a></li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <a class="uk-navbar-toggle uk-hidden@m" href="#site-menu" uk-toggle aria-label="Toggle navigation"><span uk-navbar-toggle-icon></span></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div id="site-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close aria-label="Close"></button>
+      <h2 class="uk-h4">Site menu</h2>
+      <ul class="uk-nav uk-nav-default">
+          <li><a href="index.html">Home</a></li>
+          <li class="uk-nav-header">Overlays</li>
+          <li><a href="modal.html">Modal</a></li>
+          <li><a href="offcanvas.html">Offcanvas</a></li>
+          <li><a href="dropdown.html">Drop and dropdown</a></li>
+          <li><a href="tooltip.html">Tooltip</a></li>
+          <li><a href="notification.html">Notification</a></li>
+          <li><a href="lightbox.html">Lightbox</a></li>
+          <li class="uk-nav-header">Navigation</li>
+          <li><a href="navbar.html">Navbar</a></li>
+          <li><a href="switcher.html">Switcher and tab</a></li>
+          <li><a href="content.html">Pagination, breadcrumb and nav</a></li>
+          <li><a href="sticky.html">Sticky and scrollspy</a></li>
+          <li class="uk-nav-header">Content</li>
+          <li><a href="accordion.html">Accordion and toggle</a></li>
+          <li><a href="alert.html">Alert</a></li>
+          <li><a href="slideshow.html">Slideshow</a></li>
+          <li><a href="slider.html">Slider</a></li>
+          <li><a href="filter.html">Filter</a></li>
+          <li><a href="loading.html">Spinner and progress</a></li>
+          <li class="uk-nav-header">Forms</li>
+          <li><a href="form.html">Form</a></li>
+      </ul>
+    </div>
+  </div>
+  <main id="content" class="uk-container uk-margin-medium-top">
+    <h1>Form</h1>
+    <p class="uk-text-lead">A form that marks its fields valid or invalid when it is sent.</p>
+    <form id="signup" class="uk-form-stacked uk-width-large" novalidate>
+      <div class="uk-margin">
+        <label class="uk-form-label" for="signup-name">Name</label>
+        <div class="uk-form-controls"><input class="uk-input" id="signup-name" type="text"></div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label" for="signup-email">Email</label>
+        <div class="uk-form-controls"><input class="uk-input" id="signup-email" type="email"></div>
+        <p class="uk-text-small uk-margin-remove" id="signup-email-message" aria-live="polite"></p>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label" for="signup-plan">Plan</label>
+        <div class="uk-form-controls">
+          <select class="uk-select" id="signup-plan"><option value="">Choose a plan</option><option>Basic</option><option>Team</option></select>
+        </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label" for="signup-photo">Photo</label>
+        <div uk-form-custom="target: true">
+          <input type="file" id="signup-photo" aria-label="Photo">
+          <input class="uk-input uk-form-width-medium" type="text" placeholder="Choose a file" aria-label="Chosen file" disabled>
+        </div>
+      </div>
+      <button class="uk-button uk-button-primary" type="submit">Sign up</button>
+      <p id="signup-result" class="uk-text-meta" aria-live="polite"></p>
+    </form>
+  </main>
+  <footer class="uk-container uk-margin-large-top uk-margin-medium-bottom uk-text-small uk-text-muted">
+    <p>A page of the components demo site of the step pack. The markup follows the framework's own test pages
+    (UIkit 3.25.31, MIT licence, copyright YOOtheme GmbH, getuikit.com); the texts and images are the demo site's own.</p>
+  </footer>
+  <script>
+    document.getElementById('signup').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var invalid = 0;
+      function mark(el, ok) { el.classList.toggle('uk-form-danger', !ok); el.classList.toggle('uk-form-success', ok); if (!ok) invalid += 1; }
+      var name = document.getElementById('signup-name');
+      var email = document.getElementById('signup-email');
+      var plan = document.getElementById('signup-plan');
+      var message = document.getElementById('signup-email-message');
+      mark(name, name.value.trim() !== '');
+      var emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value);
+      mark(email, emailOk);
+      message.textContent = emailOk ? '' : 'Type an address like name@example.com.';
+      message.className = emailOk ? 'uk-text-small uk-margin-remove' : 'uk-text-small uk-margin-remove uk-text-danger';
+      mark(plan, plan.value !== '');
+      document.getElementById('signup-result').textContent = invalid ? '' : 'Welcome, ' + name.value.trim() + '!';
+    });
+  </script>
+</body>
+</html>
